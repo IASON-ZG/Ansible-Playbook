@@ -1,0 +1,94 @@
+# Target the required hosts and become sudo
+
+- hosts: Nodes
+  become: true
+
+  tasks:
+  
+  # Install the first required application on the virtual machine
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+  # Install docker prerequisites   
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+
+    # Install docker keys to suppress the warning and error messages
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    
+    # Add the repository to use when downloading Docker binaries
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    # Update cache and install Docker
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    # Final step for Docker, install the module for Python
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
+        state: latest
+
+   #Downloading mySQL image
+  - name: Download mySQL image
+    community.docker.docker_image:
+	    name : mysql:5.7.42-debian
+	    source:pull
+    
+  #Downloading Task Manager App 
+  - name: Download app image
+    community.docker.docker_image:
+      name: iaziogas/app
+      source:pull
+  
+  #Creating subnetwork on docker
+  - name:Create a network
+    docker_network:
+      name:network_team_1
+
+  #Creating a container for the database
+  - name:Create the database
+    docker_container:
+      name:mySQL_DB
+      image:mysql:5.7.42-debian
+      state:started
+      MYSQL_ROOT_PASSWORD:
+      - "root"
+      networks:
+        -name: "{{network_team_1}}"
+
+  #Creating a container for the app
+  - name:Start the app 
+    docker_container:
+      name: team1_app
+      image: "iaziogas/app:latest"
+      state:started
+      ports:
+      - "8080:8080"
+      networks:
+        -name: "{{network_team_1}}"      
+
+
+
