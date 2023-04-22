@@ -1,6 +1,6 @@
 # Target the required hosts and become sudo
 
-- hosts: Nodes
+- hosts: nodes
   become: true
 
   tasks:
