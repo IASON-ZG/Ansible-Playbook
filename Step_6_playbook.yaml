@@ -69,26 +69,26 @@
         name: network_team_1
 
   #Creating a container for the database
-  - name: Create the database
-    docker_container:
-      name: mySQL_DB
-      image: mysql:5.7.42-debian
-      state: started
-      MYSQL_ROOT_PASSWORD:
-      - "root"
-      networks:
-        -name: "{{network_team_1}}"
+    - name: Create the database
+      docker_container:
+        name: mySQL_DB
+        image: mysql:5.7.42-debian
+        state: started
+        MYSQL_ROOT_PASSWORD:
+        - "root"
+        networks:
+          -name: "{{network_team_1}}"
 
   #Creating a container for the app
-  - name: Start the app 
-    docker_container:
-      name: team1_app
-      image: "iaziogas/app:latest"
-      state: started
-      ports:
-      - "8080:8080"
-      networks:
-        -name: "{{network_team_1}}"      
+    - name: Start the app 
+      docker_container:
+        name: team1_app
+        image: "iaziogas/app:latest"
+        state: started
+        ports:
+        - "8080:8080"
+        networks:
+          -name: "{{network_team_1}}"      
 
 
 
