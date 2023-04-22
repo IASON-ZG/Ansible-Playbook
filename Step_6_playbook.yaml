@@ -52,39 +52,39 @@
         state: latest
 
    #Downloading mySQL image
-  - name: Download mySQL image
-    community.docker.docker_image:
-	    name : mysql:5.7.42-debian
-	    source:pull
+    - name: Download mySQL image
+      community.docker.docker_image:
+	      name : mysql:5.7.42-debian
+	      source: pull
     
   #Downloading Task Manager App 
-  - name: Download app image
-    community.docker.docker_image:
-      name: iaziogas/app
-      source:pull
+    - name: Download app image
+      community.docker.docker_image:
+        name: iaziogas/app
+        source: pull
   
   #Creating subnetwork on docker
-  - name:Create a network
-    docker_network:
-      name:network_team_1
+    - name: Create a network
+      docker_network:
+        name: network_team_1
 
   #Creating a container for the database
-  - name:Create the database
+  - name: Create the database
     docker_container:
-      name:mySQL_DB
-      image:mysql:5.7.42-debian
-      state:started
+      name: mySQL_DB
+      image: mysql:5.7.42-debian
+      state: started
       MYSQL_ROOT_PASSWORD:
       - "root"
       networks:
         -name: "{{network_team_1}}"
 
   #Creating a container for the app
-  - name:Start the app 
+  - name: Start the app 
     docker_container:
       name: team1_app
       image: "iaziogas/app:latest"
-      state:started
+      state: started
       ports:
       - "8080:8080"
       networks:
