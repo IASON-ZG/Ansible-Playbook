@@ -53,13 +53,13 @@
 
    #Downloading mySQL image
     - name: Download mySQL image
-      community.docker.docker_image:
+      docker_image:
         name : mysql:5.7.42-debian
         source: pull
     
   #Downloading Task Manager App 
     - name: Download app image
-      community.docker.docker_image:
+      docker_image:
         name: iaziogas/app
         source: pull
   
