@@ -4,23 +4,16 @@
   tasks:
 
 #Downloading mySQL image
-    - community.general.docker_image:
-      name: Download mySQL image
-        name : mysql
-        tag: 5.7.42-debian
-        source: pull
-    
+    - name: Download mySQL image
+      command: docker pull mysql:5.7.42-debian
+
   #Downloading Task Manager App 
     - name: Download app image
-      community.general.docker_image:
-        name: iaziogas/app
-        tag: latest
-        source: pull
+      command: docker pull iaziogas/app:latest
   
   #Creating subnetwork on docker
     - name: Create a network
-      docker_network:
-        name: network_team_1
+      command: docker network create -d bridge network_team_1
 
   #Creating a container for the database
     - name: Create the database
