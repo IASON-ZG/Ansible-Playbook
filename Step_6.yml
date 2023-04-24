@@ -30,4 +30,4 @@
 
   #Creating a container for the app
     - name: Start the app 
-      command: "docker run -d -e DB_HOST=94.66.57.237 -e DB_USER=testadmin -e DB_USER_PASSWORD=DevOps2023! --network=network_team_1 -p 8080:8080 --name team_1_app iaziogas/app:latest"
+      command: "docker run -d -e DB_HOST=team1db.mysql.database.azure.com -e DB_USER=testadmin -e DB_USER_PASSWORD=DevOps2023! --network=network_team_1 -p 8080:8080 --name team_1_app iaziogas/app:latest"
