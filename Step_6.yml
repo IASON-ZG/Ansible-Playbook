@@ -21,7 +21,7 @@
 
     
   #Obtaining the ip adress of the database
-    - command: 'docker container inspect -f '{{ .NetworkSettings.Networks.network_team_1.IPAddress }}' mySQL_DB'
+    - command: 'docker container inspect -f "{{ .NetworkSettings.Networks.network_team_1.IPAddress }}" mySQL_DB'
       register: ip_address
 
   #Creating a container for the app
