@@ -20,8 +20,8 @@
       command: docker run -d --network=network_team_1 -e MYSQL_ROOT_PASSWORD=root --name mySQL_DB mysql:5.7.42-debian
     
   #Obtaining the ip adress of the database
-    -name: Obtaining ip adress
-     ip_adress: command: docker container inspect -f "{{ .NetworkSettings.Networks.network_team_1.IPAddress }}" mySQL_DB
+    - name: Obtaining ip adress
+      ip_adress: command: docker container inspect -f "{{ .NetworkSettings.Networks.network_team_1.IPAddress }}" mySQL_DB
 
   #Creating a container for the app
     - name: Start the app 
