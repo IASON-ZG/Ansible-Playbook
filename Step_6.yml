@@ -27,4 +27,4 @@
 
   #Creating a container for the app
     - name: Start the app 
-      command: "docker run -d -e DB_HOST={{ ip_address.stdout }} --network=network_team_1 - -p 8080:8080 --name team_1_app iaziogas/app:latest"
+      command: "docker run -d -e DB_HOST='{{ ip_address }}'' --network=network_team_1 - -p 8080:8080 --name team_1_app iaziogas/app:latest"
