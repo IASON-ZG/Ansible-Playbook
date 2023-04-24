@@ -3,21 +3,21 @@
 
   tasks:
 
-#Downloading mySQL image
-  #   - name: Download mySQL image
-  #     command: docker pull mysql:5.7.42-debian
+  #Downloading mySQL image
+    - name: Download mySQL image
+      command: docker pull mysql:5.7.42-debian
 
-  # #Downloading Task Manager App 
-  #   - name: Download app image
-  #     command: docker pull iaziogas/app:latest
+  #Downloading Task Manager App 
+    - name: Download app image
+      command: docker pull iaziogas/app:latest
   
-  # #Creating subnetwork on docker
-  #   - name: Create a network
-  #     command: docker network create -d bridge network_team_1
+  #Creating subnetwork on docker
+    - name: Create a network
+      command: docker network create -d bridge network_team_1
 
-  # #Creating a container for the database
-  #   - name: Create the database
-  #     command: docker run -d --network=network_team_1 -e MYSQL_ROOT_PASSWORD=root --name mySQL_DB mysql:5.7.42-debian
+  #Creating a container for the database
+    - name: Create the database
+      command: docker run -d --network=network_team_1 -e MYSQL_ROOT_PASSWORD=root --name mySQL_DB mysql:5.7.42-debian
 
     
 #Obtaining the ip adress of the database
@@ -25,8 +25,6 @@
   #   shell: docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB
   #   register: ip_address
 
-
-  # - debug : "msg = '{{ ip_address.stdout }}'"
 
   #Creating a container for the app
     - name: Start the app 
