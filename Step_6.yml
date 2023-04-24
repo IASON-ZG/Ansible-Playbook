@@ -25,7 +25,7 @@
       command: "docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB"
       register: ip_address
     - debug :
-      msg ="{{ ip_address }}"
+      msg : "{{ ip_address }}"
 
   #Creating a container for the app
     - name: Start the app 
