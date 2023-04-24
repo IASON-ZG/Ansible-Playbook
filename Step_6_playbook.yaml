@@ -19,6 +19,7 @@
           - apt-transport-https
           - ca-certificates
           - curl
+          - pyOpenSSL
           - software-properties-common
           - python3-pip
           - virtualenv
