@@ -24,7 +24,7 @@
         MYSQL_ROOT_PASSWORD:
         - "root"
         networks:
-          -name: "{{network_team_1}}"
+          -name: "network_team_1"
 
   #Creating a container for the app
     - name: Start the app 
@@ -35,4 +35,4 @@
         ports:
         - "8080:8080"
         networks:
-          -name: "{{network_team_1}}"
+          -name: "network_team_1"
