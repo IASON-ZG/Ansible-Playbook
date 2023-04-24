@@ -49,7 +49,6 @@
     - name: Install Docker Module for Python
       pip:
         name: docker
-        state: latest
 
    #Downloading mySQL image
     - name: Download mySQL image
