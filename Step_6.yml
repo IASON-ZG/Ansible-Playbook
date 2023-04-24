@@ -17,22 +17,8 @@
 
   #Creating a container for the database
     - name: Create the database
-      docker_container:
-        name: mySQL_DB
-        image: mysql:5.7.42-debian
-        state: started
-        MYSQL_ROOT_PASSWORD:
-        - "root"
-        networks:
-          -name: "network_team_1"
+      command: docker run --network=network_team_1 -e MYSQL_ROOT_PASSWORD=root --name mySQL_DB mysql:5.7.42-debian
 
   #Creating a container for the app
     - name: Start the app 
-      docker_container:
-        name: team1_app
-        image: "iaziogas/app:latest"
-        state: started
-        ports:
-        - "8080:8080"
-        networks:
-          -name: "network_team_1"
+      command: docker run --network=network_team_1 -p 8080:8080 --name team_1_app iaziogas/app:latest
