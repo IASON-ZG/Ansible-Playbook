@@ -22,13 +22,11 @@
     
   #Obtaining the ip adress of the database
     - name: Obtaining database IP address
-      command: "docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB"
+      command: docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB
       register: ip_address
 
-    - set_fact:
-      string_to_echo: "{{ ip_address.stdout }}"
 
-    - debug : "msg = '{{ string_to_echo }}'"
+    - debug : "msg = '{{ ip_address.stdout }}'"
 
   #Creating a container for the app
     - name: Start the app 
