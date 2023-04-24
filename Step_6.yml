@@ -5,8 +5,7 @@
 
 #Downloading mySQL image
     - name: Download mySQL image
-      tasks:
-      - community.docker.docker_image:
+      community.docker.docker_image:
         name : mysql
         tag: 5.7.42-debian
         source: pull
