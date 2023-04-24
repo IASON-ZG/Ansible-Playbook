@@ -22,7 +22,7 @@
     
   #Obtaining the ip adress of the database
     - name: Obtaining database IP address
-      command: cat "docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB"
+      shell: docker inspect --format '{''{ .NetworkSettings.Networks.network_team_1.IPAddress }''}' mySQL_DB
       register: ip_address
 
 
