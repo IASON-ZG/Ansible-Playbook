@@ -18,11 +18,12 @@
   #Creating a container for the database
     - name: Create the database
       command: docker run -d --network=network_team_1 -e MYSQL_ROOT_PASSWORD=root --name mySQL_DB mysql:5.7.42-debian
+
     
   #Obtaining the ip adress of the database
-    - name: Obtaining ip adress
-      ip_adress: command: docker container inspect -f "{{ .NetworkSettings.Networks.network_team_1.IPAddress }}" mySQL_DB
+    - shell: docker container inspect -f '{{ .NetworkSettings.Networks.network_team_1.IPAddress }}' mySQL_DB
+      register: ip_address
 
   #Creating a container for the app
     - name: Start the app 
-      command: docker run -d -e DB_HOST={{ ip_adress }} --network=network_team_1 - -p 8080:8080 --name team_1_app iaziogas/app:latest
+      command: docker run -d -e DB_HOST={{ ip_address }} --network=network_team_1 - -p 8080:8080 --name team_1_app iaziogas/app:latest
