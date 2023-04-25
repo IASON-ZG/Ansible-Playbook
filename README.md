@@ -15,9 +15,9 @@ download the necessary tools for the next steps.
 In the next stage we configurate a pipeline thats uses the second playbook "Step_6" which does the following things.
 
 ### Steps : 
-- Downloads the latest image of our toDoAppWithLogin from dockerhub
-- Checks if a container is already up and running with the outdated image
-- If another container is active it shuts it down, removes it and finally initializes a new container with the latest image
+- Downloads the latest image of our toDoAppWithLogin from dockerhub.
+- Checks if a container is already up and running with the outdated imagel.
+- If another container is active it shuts it down, removes it from the docker files and initializes a new container with the latest image.
 
 
 
