@@ -35,7 +35,7 @@
   
   #Deleting previous container
     - name: Delete outdated container 
-      command: docker {{ command }} team_1_app
+      command: docker {{ item }} team_1_app
       with_items: 
       - stop
       - rm
