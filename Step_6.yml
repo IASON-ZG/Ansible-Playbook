@@ -11,7 +11,7 @@
     - name: Download app image
       command: docker pull iaziogas/app:latest
 
-      
+
   
   # #Creating subnetwork on docker
   #   - name: Create a network
@@ -32,6 +32,7 @@
     - name: get container status
       shell: docker ps -a -f name=team_1_app --format {%raw%}"table {{.Status}}"{%endraw%} | awk 'FNR == 2 {print}' | awk '{print $1}'
       register: status
+      debug: msg: status.stdout
   
   #Deleting previous container
     - name: Delete outdated container 
