@@ -19,5 +19,6 @@ In the next stage we configurate a pipeline thats uses the second playbook "Step
 - Checks if a container is already up and running with the outdated imagel.
 - If another container is active it shuts it down, removes it from the docker files and initializes a new container with the latest image.
 
+![Step 6 Results](assetsREADME/step_6_result.PNG "Tasks of Step 6 playbook")
 
 
