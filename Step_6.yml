@@ -32,6 +32,8 @@
     - name: get container status
       shell: docker ps -a -f name=team_1_app --format {%raw%}"table {{.Status}}"{%endraw%} | awk 'FNR == 2 {print}' | awk '{print $1}'
       register: status
+
+    - name: debugging
       debug:
         var: status.stdout
   
