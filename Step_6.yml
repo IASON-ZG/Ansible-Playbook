@@ -39,7 +39,7 @@
       with_items: 
       - stop
       - rm
-      when: status.stdout == "Up"
+      when: status.stdout == "Up" or status.stdout="Created"
 
   #Creating a container for the app
     - name: Start the app 
